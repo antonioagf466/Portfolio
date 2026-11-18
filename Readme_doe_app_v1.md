@@ -179,7 +179,7 @@ erDiagram
 
 ```mermaid
 flowchart LR
-    A[Diário Oficial - DOE] --> B[Coleta<br>: Power Automate / Python]
+    A[Diário Oficial - DOE] --> B[Coleta<br> Power Automate / Python]
     B --> C[Tratamento<br>texto, protocolo, assunto, link]
     C --> D[Arquivos no<br>OneDrive]
     D --> E[Power Query<br>tabela Arquivos]
