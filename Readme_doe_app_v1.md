@@ -173,30 +173,6 @@ erDiagram
 | Médias | `Média diária publicações – últimos dias` | Linha de referência e indicadores de média |
 | Visual / UX | `Mural publicação`, `Cor variação dia` | Painel de conteúdo e formatação condicional |
 
-### Exemplos (ilustrativos, trocar pelo DAX real)
-
-```dax
-Qtde publicações =
-COUNTROWS ( Arquivos )
-```
-
-```dax
-Qtde Publicações LM =
-CALCULATE (
-    [Qtde publicações],
-    DATEADD ( dCalendário[Data], -1, MONTH )
-)
-```
-
-```dax
-Mural publicação =
-IF (
-    HASONEVALUE ( Arquivos[Protocolo] ),
-    SELECTEDVALUE ( Arquivos[Conteúdo] ),
-    "Selecione uma publicação na tabela para ler o conteúdo."
-)
-```
-
 ---
 
 ## 🔄 Fonte e atualização dos dados
