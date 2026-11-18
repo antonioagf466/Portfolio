@@ -38,9 +38,9 @@ O dashboard reúne tudo em uma tela, com histórico de eventos, evolução de va
 
 ## 🖥️ Visão geral do dashboard
 
-![Visão geral](./img/contratos-geral.png)
-![Evolução do contrato](./img/contratos-evolucao.png)
-![Modelo de dados](./img/contratos-modelo.png)
+![Visão geral](./img/contratos_pagina_inicial.png)
+![Evolução do contrato](./img/contratos_pagina_inicial_clicada.png)
+![Modelo de dados](./img/contratos_dados.png)
 
 | Área | Descrição |
 |---|---|
@@ -154,7 +154,7 @@ O modelo tem uma **tabela central de contratos**, uma **tabela de eventos** com 
 | `_Data Base Apostilamento` | Data de referência para apostilamentos e reajustes |
 | `Contratos último ano` / `Contratos últimos 6 meses` | Contagem de contratos no período |
 | `Descrição objeto` / `Descrição observação` | Textos dinâmicos do contrato selecionado |
-|  Valor inicial, Valor atual, Variação (R$), Variação (%) | Cards de evolução |
+|  `Valor inicial, Valor atual, Variação (R$), Variação (%)` | Cards de evolução |
 
 
 ---
