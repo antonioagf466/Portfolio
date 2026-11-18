@@ -220,7 +220,7 @@ sequenceDiagram
 
 ## 📊 Painel no Power BI
 
-./img/bi-tiquetes.png
+/tiquetes_bi.png
 
 O `bi_tiquetes.pbix` usa a `Tabela_tiquetes.xlsx` como fonte, carregada em uma única tabela (`Consulta1`).
 
