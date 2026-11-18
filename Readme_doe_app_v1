@@ -1,0 +1,80 @@
+# 📰 Dashboard Diário Oficial — AGERGS
+
+Painel em **Power BI** desenvolvido na **AGERGS** (Agência Estadual de Regulação dos Serviços Públicos Delegados do Rio Grande do Sul) para centralizar, pesquisar e analisar as publicações da agência no **Diário Oficial do Estado (DOE)**.
+
+O objetivo é dar às equipes uma forma rápida de saber **o que foi publicado, quando, sobre qual assunto**, e ler o conteúdo completo de cada publicação sem precisar navegar pelo site do Diário Oficial.
+
+---
+
+## 📌 Sumário
+
+- [Contexto e problema](#-contexto-e-problema)
+- [Visão geral do dashboard](#-visão-geral-do-dashboard)
+- [Funcionalidades](#-funcionalidades)
+- [Modelo de dados](#-modelo-de-dados)
+- [Colunas calculadas](#-colunas-calculadas)
+- [Medidas DAX](#-medidas-dax)
+- [Fonte e atualização dos dados](#-fonte-e-atualização-dos-dados)
+- [Tecnologias](#-tecnologias)
+- [Aprendizados](#-aprendizados)
+- [Próximos passos](#-próximos-passos)
+
+---
+
+## 🎯 Contexto e problema
+
+As publicações da AGERGS no Diário Oficial (resoluções, portarias, afastamentos, atos administrativos, comunicados, decretos etc.) estavam espalhadas em várias edições do DOE. Para encontrar uma publicação específica, era preciso buscar manualmente por data ou protocolo, sem visão consolidada do volume publicado ou dos assuntos mais recorrentes.
+
+O dashboard resolve isso com:
+- **Um único lugar** para consultar todas as publicações desde 2022;
+- **Busca por conteúdo ou por protocolo**;
+- **Leitura do texto completo** dentro do próprio painel;
+- **Indicadores** de volume, frequência por assunto e tendência ao longo do tempo.
+
+---
+
+## 🖥️ Visão geral do dashboard
+
+![Dashboard Diário Oficial](./img/dashboard-geral.png)
+![Leitura de publicação selecionada](./img/dashboard-conteudo.png)
+
+O layout segue a identidade visual da AGERGS e é dividido em quatro áreas:
+
+| Área | Descrição |
+|---|---|
+| **Cabeçalho / filtros** | Filtro por assunto, botões de período rápido e intervalo de datas personalizado |
+| **Busca** | Alternância entre busca por *Conteúdo* ou *Protocolo*, campo de pesquisa e botão *Limpar filtros* |
+| **Indicadores e gráficos** | Total de publicações, tempo médio de leitura, assuntos mais frequentes e distribuição mensal |
+| **Tabela + leitor** | Lista de publicações com link para o DOE e painel lateral que exibe o conteúdo completo da publicação selecionada |
+
+---
+
+## ⚙️ Funcionalidades
+
+### 🔎 Filtros
+- **Filtrar por assunto**: lista suspensa com todos os assuntos (Resolução, Portaria, Afastamento, Atos Administrativos, Comunicados, Decreto...).
+- **Filtros rápidos de data**: botões `Hoje`, `1 Mês`, `6 Meses`, `1 Ano` e `Geral`.
+- **Intervalo personalizado**: seleção de data inicial e final.
+- **Limpar filtros**: volta o painel ao estado padrão com um clique.
+
+### 🔤 Busca
+- **Por conteúdo**: pesquisa termos dentro do texto integral das publicações.
+- **Por protocolo**: localiza diretamente uma publicação pelo número de protocolo.
+
+### 📊 Indicadores
+- **Card de hoje**: mostra quantas publicações saíram no dia, ou a mensagem *"Não há publicações hoje."*
+- **Total de publicações** no período filtrado.
+- **Tempo médio de leitura** (ex.: `2min 27s`), calculado a partir da quantidade de palavras.
+- **Assuntos mais frequentes**: gráfico de barras com o top 5 de assuntos.
+- **Distribuição das publicações**: gráfico de linha mensal com hierarquia mês/ano e **linha de média** de referência.
+
+### 📄 Tabela e leitor de publicações
+- Colunas: **Data, Título, Assunto, Protocolo, Tempo de leitura, Link**.
+- O ícone de **Link** abre a publicação original no Diário Oficial.
+- Ao **selecionar uma linha**, o painel *Conteúdo da publicação* mostra o texto integral. Sem seleção, o painel exibe a orientação *"Selecione uma publicação na tabela para ler o conteúdo."*
+
+---
+
+## 🗂️ Modelo de dados
+
+Modelo **estrela** simples, com uma tabela fato, uma dimensão de calendário e uma tabela dedicada para medidas.
