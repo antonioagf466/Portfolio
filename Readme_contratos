@@ -1,0 +1,83 @@
+# 📑 Análise dos Contratos — AGERGS
+
+Painel em **Power BI** desenvolvido na **AGERGS** (Agência Estadual de Regulação dos Serviços Públicos Delegados do Rio Grande do Sul) para acompanhar o **ciclo de vida dos contratos da agência**: assinatura, termos aditivos, prorrogações, renovações, ordens de início e publicações.
+
+O painel junta duas fontes:
+- **LicitaCon (TCE-RS)**: base oficial com contratos, eventos, alterações, documentos e fornecedores;
+- **Diário Oficial do Estado (DOE)**: atualizações extraídas das publicações por um agente de IA. Assim o painel fica atualizado antes de os dados chegarem ao LicitaCon.
+
+---
+
+## 📌 Sumário
+
+- #-contexto-e-problema
+- #-visão-geral-do-dashboard
+- #-funcionalidades
+- #-arquitetura-da-solução
+- #-modelo-de-dados
+- #-medidas-dax
+- #-tratamentos-no-power-query
+- #-tecnologias
+- #-aprendizados
+- #-próximos-passos
+
+---
+
+## 🎯 Contexto e problema
+
+As informações sobre os contratos da AGERGS estavam espalhadas:
+- os dados estruturados (valores, eventos, aditivos e documentos) ficam no **LicitaCon**, que não é atualizado em tempo real;
+- as alterações mais recentes, como renovações, prorrogações e aditivos, saem primeiro no **Diário Oficial**;
+- os responsáveis por cada contrato (**gestores e fiscais**) eram controlados à parte.
+
+Para responder perguntas simples, como *"quanto esse contrato já cresceu desde a assinatura?"*, *"quem é o fiscal atual?"* ou *"onde está o PDF do 3º termo aditivo?"*, era preciso consultar vários sistemas e documentos.
+
+O dashboard reúne tudo em uma tela, com histórico de eventos, evolução de valor, responsáveis e links para os documentos.
+
+---
+
+## 🖥️ Visão geral do dashboard
+
+./img/contratos-geral.png
+./img/contratos-evolucao.png
+./img/contratos-modelo.png
+
+| Área | Descrição |
+|---|---|
+| **Cabeçalho** | Título, data da última atualização (*"Atualizado em dd/mm/aaaa"*) e botão **Início** |
+| **Filtros** | Fornecedor, Gestor, Fiscal, Nº processo, Nº contrato, Tipo de evento, Tipo de operação, intervalo de datas e busca no objeto do contrato |
+| **Tabela de eventos** | Histórico cronológico de todos os eventos dos contratos |
+| **Evolução** | Gráfico de linha com o valor do contrato ao longo do tempo |
+| **Evolução do contrato** | Cards de Valor inicial, Valor atual, Variação (R$) e Variação (%) |
+| **Downloads** | Lista de arquivos do contrato com link direto para download |
+
+---
+
+## ⚙️ Funcionalidades
+
+### 🔎 Filtros
+- **Fornecedor, Nº processo, Nº contrato**: localizam o contrato direto.
+- **Gestor e Fiscal**: mostram os contratos sob responsabilidade de cada servidor, a partir de tabelas normalizadas.
+- **Tipo de evento**: Termo Aditivo, Ordem de Início, Publicação etc.
+- **Tipo de operação**: Prorrogação de prazo, Renovação, Outras alterações etc.
+- **Data do evento**: intervalo personalizado.
+- **Pesquisa no objeto**: busca por texto na descrição do objeto do contrato.
+- **Limpar filtros**: volta ao estado inicial. Há uma dica na tela sobre segurar **CTRL** para selecionar vários itens.
+
+### 📋 Tabela de eventos
+Colunas: **Data evento, Nº contrato, Tipo operação, Nº processo, Fornecedor, Tipo evento, Nº dias novo prazo, Acréscimo (R$), Acréscimo (%)**.
+
+### 📈 Evolução do contrato
+Ao **selecionar um processo** na tabela:
+- o gráfico mostra a **linha do tempo do valor**, com rótulo de valor e variação acumulada (ex.: `R$ 69.800,00 → R$ 143.210,36 (+105,17%)`);
+- os cards mostram **Valor inicial, Valor atual, Variação (R$) e Variação (%)**;
+- a tabela de **Downloads** fica restrita aos documentos daquele contrato.
+
+Sem seleção, o painel mostra *"Selecione um processo para visualizar sua evolução"* e os cards ficam com `--`.
+
+### 📎 Downloads
+Lista os arquivos do contrato (PDFs de termos aditivos, planilhas de custos etc.) com **link clicável** para baixar o documento original.
+
+---
+
+## 🏗️ Arquitetura da solução
