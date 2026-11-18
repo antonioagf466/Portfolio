@@ -35,8 +35,8 @@ O dashboard resolve isso com:
 
 ## 📊 Visão geral do dashboard
 
-![Visão geral do dashboard](./img/dashboard-geral.png)
-![Leitura do conteúdo de uma publicação](./img/dashboard-conteudo.png)
+![Visão geral do dashboard](/doe_pagina_inicial.png)
+![Leitura do conteúdo de uma publicação](/doe_pagina_clicada.png)
 
 O layout segue a identidade visual da AGERGS e é dividido em quatro áreas:
 
