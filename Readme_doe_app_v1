@@ -78,3 +78,38 @@ O layout segue a identidade visual da AGERGS e é dividido em quatro áreas:
 ## 🗂️ Modelo de dados
 
 Modelo **estrela** simples, com uma tabela fato, uma dimensão de calendário e uma tabela dedicada para medidas.
+### Fluxo do DOE 
+
+1. O **Power Automate** processa as publicações do Diário Oficial. 
+2. Um **agente no Copilot Studio** lê as publicações ligadas a contratos e extrai em **JSON** os dados de renovação ou aditivo: contrato, valor, vigência, link, gestor, fiscal e tipo. 
+3. Os JSONs são salvos em uma pasta no **OneDrive/SharePoint**. 
+4. O Power Query lê a pasta (`contratos_agergs_v2`), expande os arquivos e **mantém só o registro mais recente por `id_contrato`**. 
+5. O resultado (`atualizacao_contratos`) complementa os dados do LicitaCon. `[CONFIRMAR]` Forma de carga do LicitaCon (download CSV, API, outro) e frequência de atualização. --- 
+
+## 🗂️ Modelo de dados O modelo tem uma **tabela central de contratos**, uma **tabela de eventos** com o histórico e dimensões auxiliares. A chave principal de ligação é **`ID_CONTRATO_ANO`**, 
+uma chave composta criada por mim para identificar o contrato de forma única (o número do contrato se repete entre anos). 
+
+### Tabelas principais (LicitaCon) 
+| Tabela | Papel | Destaques | 
+|---|---|---| 
+| `Contratos` | Dimensão central | `ANO_CONTRATO`, `ANO_LICITACAO`, `ANO_PROCESSO`, `ANO_ASSINATURA` (calc.), `CD_TIPO_MODALIDADE`, 
+`CNPJ_CONSORCIO`, `CNPJ_ORGAO_GERENCIADOR`, flags `BL_*`, `DIAS_RESTANTE_CONTRATO` (calc.) | | `Evento` | Fato: histórico de eventos | 
+`DT_EVENTO`, `CD_TIPO_EVENTO`, `DS_PUBLICACAO`, `NR_CONTRATO`, `NR_PROCESSO`, `NR_REGISTRO`, `SQ_EVENTO`, `ID_CONTRATO_ANO` | | `Alteração` *(oculta)* | 
+Detalhe das alterações | `CD_TIPO_OPERACAO`, `DS_JUSTIFICATIVA`, `DS_OUTRA_OPERACAO`, `NR_DIAS_NOVO_PRAZO`, `NR_DOCUMENTO_ANTERIOR/NOVO`, acréscimos | | 
+`Alteracao_Evento` | Junção alteração × evento, já tratada | `DT_EVENTO`, `SQ_EVENTO`, `TIPO_OPERACAO_DESC`, `DiasNovoPrazo`, `PcAcrescimo` | | `Documentos` | 
+Arquivos do contrato | `ARQUIVO_URL_DOWNLOAD`, `NOME_ARQUIVO_DOCUMENTO`, `CD_TIPO_DOCUMENTO`, `ARQUIVO_HASH_MD5`, `ID_EVENTO_CONTRATO` | | `Pessoas` | Fornecedores | 
+Endereço, `DS_EMAIL`, `DS_OBJETO_SOCIAL`, `DS_PAGINA_INTERNET` etc. | 
+### Tabelas de atualização (DOE) 
+| Tabela | Papel | 
+|---|---| | 
+`contratos_agergs_v2` *(oculta)* | Leitura da pasta de JSONs (Content, Folder Path, datas) | | `pasta_dos_json` | JSONs expandidos: `contrato`, `fiscal`, `gestor`, `tipo`, `Name` | 
+| `atualizacao_contratos` | Última atualização por contrato: `id_contrato`, `valor`, `vigencia`, `link`, `nome` | | `Atualizacao` | `DataAtualizacao`, usada no cabeçalho *"Atualizado em..."* |
+### Responsáveis | 
+Tabela | Papel | 
+|---|---| | 
+`Gestores` / `Fiscais` | 
+Responsável por contrato, com `Final Vigência` e indicação do responsável **atual** (`Gestor_Atual`, `Fiscal_Atual`) | |
+`Gestores_Normalizados` / `Fiscais_Normalizados` | Uma linha por responsável × contrato, para alimentar os filtros sem nomes duplicados ou grafados de formas diferentes | 
+### Apoio 
+- `Calendario`: `Data`, `Ano`, `AnoMes`, `Dia`, `Dia semana`. 
+- `Medidas`: tabela só para organizar as medidas.
