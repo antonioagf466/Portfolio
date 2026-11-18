@@ -23,20 +23,20 @@ O objetivo é dar às equipes uma forma rápida de saber **o que foi publicado, 
 
 ## 🎯 Contexto e problema
 
-As publicações da AGERGS no Diário Oficial (resoluções, portarias, afastamentos, atos administrativos, comunicados, decretos etc.) estavam espalhadas em várias edições do DOE. Para encontrar uma publicação específica, era preciso buscar manualmente por data ou protocolo, sem visão consolidada do volume publicado ou dos assuntos mais recorrentes.
+As publicações da AGERGS no Diário Oficial (resoluções, portarias, afastamentos, atos administrativos, comunicados, decretos etc.) ficavam espalhadas em várias edições do DOE. Para encontrar uma publicação específica, era preciso buscar manualmente por data ou protocolo, e não havia uma visão consolidada do volume publicado nem dos assuntos mais recorrentes.
 
 O dashboard resolve isso com:
-- **Um único lugar** para consultar todas as publicações desde 2022;
-- **Busca por conteúdo ou por protocolo**;
-- **Leitura do texto completo** dentro do próprio painel;
-- **Indicadores** de volume, frequência por assunto e tendência ao longo do tempo.
+- **um único lugar** para consultar todas as publicações desde 2022;
+- **busca por conteúdo ou por protocolo**;
+- **leitura do texto completo** dentro do próprio painel;
+- **indicadores** de volume, frequência por assunto e tendência ao longo do tempo.
 
 ---
 
-## 🖥️ Visão geral do dashboard
+## 📊 Visão geral do dashboard
 
-![Dashboard Diário Oficial](./img/dashboard-geral.png)
-![Leitura de publicação selecionada](./img/dashboard-conteudo.png)
+![Visão geral do dashboard](./img/dashboard-geral.png)
+![Leitura do conteúdo de uma publicação](./img/dashboard-conteudo.png)
 
 O layout segue a identidade visual da AGERGS e é dividido em quatro áreas:
 
@@ -49,67 +49,205 @@ O layout segue a identidade visual da AGERGS e é dividido em quatro áreas:
 
 ---
 
-## ⚙️ Funcionalidades
+## 🧩 Funcionalidades
 
-### 🔎 Filtros
-- **Filtrar por assunto**: lista suspensa com todos os assuntos (Resolução, Portaria, Afastamento, Atos Administrativos, Comunicados, Decreto...).
-- **Filtros rápidos de data**: botões `Hoje`, `1 Mês`, `6 Meses`, `1 Ano` e `Geral`.
-- **Intervalo personalizado**: seleção de data inicial e final.
-- **Limpar filtros**: volta o painel ao estado padrão com um clique.
+### Filtros
 
-### 🔤 Busca
-- **Por conteúdo**: pesquisa termos dentro do texto integral das publicações.
-- **Por protocolo**: localiza diretamente uma publicação pelo número de protocolo.
+| Filtro | O que faz |
+|---|---|
+| Filtrar por assunto | Lista suspensa com todos os assuntos (Resolução, Portaria, Afastamento, Atos Administrativos, Comunicados, Decreto...) |
+| Filtros rápidos de data | Botões `Hoje`, `1 Mês`, `6 Meses`, `1 Ano` e `Geral` |
+| Intervalo personalizado | Seleção de data inicial e data final |
+| Limpar filtros | Volta o painel ao estado padrão com um clique |
 
-### 📊 Indicadores
-- **Card de hoje**: mostra quantas publicações saíram no dia, ou a mensagem *"Não há publicações hoje."*
-- **Total de publicações** no período filtrado.
-- **Tempo médio de leitura** (ex.: `2min 27s`), calculado a partir da quantidade de palavras.
-- **Assuntos mais frequentes**: gráfico de barras com o top 5 de assuntos.
-- **Distribuição das publicações**: gráfico de linha mensal com hierarquia mês/ano e **linha de média** de referência.
+### Busca
 
-### 📄 Tabela e leitor de publicações
+| Modo | O que faz |
+|---|---|
+| Por conteúdo | Pesquisa termos dentro do texto integral das publicações |
+| Por protocolo | Localiza diretamente uma publicação pelo número de protocolo |
+
+### Indicadores
+
+| Visual | O que mostra |
+|---|---|
+| Card de hoje | Quantidade de publicações do dia, ou a mensagem *"Não há publicações hoje."* |
+| Publicações | Total de publicações no período filtrado |
+| Tempo médio de leitura | Média estimada a partir da quantidade de palavras (ex.: `2min 27s`) |
+| Assuntos mais frequentes | Gráfico de barras com o top 5 de assuntos |
+| Distribuição das publicações | Gráfico de linha mensal com hierarquia mês/ano e linha de média de referência |
+
+### Tabela e leitor de publicações
+
 - Colunas: **Data, Título, Assunto, Protocolo, Tempo de leitura, Link**.
 - O ícone de **Link** abre a publicação original no Diário Oficial.
-- Ao **selecionar uma linha**, o painel *Conteúdo da publicação* mostra o texto integral. Sem seleção, o painel exibe a orientação *"Selecione uma publicação na tabela para ler o conteúdo."*
+- Ao **selecionar uma linha**, o painel *Conteúdo da publicação* mostra o texto integral.
+- Sem seleção, o painel exibe a orientação *"Selecione uma publicação na tabela para ler o conteúdo."*
 
 ---
 
-## 🗂️ Modelo de dados
+## 🧱 Modelo de dados
 
-Modelo **estrela** simples, com uma tabela fato, uma dimensão de calendário e uma tabela dedicada para medidas.
-### Fluxo do DOE 
+Modelo **estrela** simples, com uma tabela fato, uma dimensão de calendário e uma tabela dedicada só para as medidas.
 
-1. O **Power Automate** processa as publicações do Diário Oficial. 
-2. Um **agente no Copilot Studio** lê as publicações ligadas a contratos e extrai em **JSON** os dados de renovação ou aditivo: contrato, valor, vigência, link, gestor, fiscal e tipo. 
-3. Os JSONs são salvos em uma pasta no **OneDrive/SharePoint**. 
-4. O Power Query lê a pasta (`contratos_agergs_v2`), expande os arquivos e **mantém só o registro mais recente por `id_contrato`**. 
-5. O resultado (`atualizacao_contratos`) complementa os dados do LicitaCon. `[CONFIRMAR]` Forma de carga do LicitaCon (download CSV, API, outro) e frequência de atualização. --- 
+```mermaid
+erDiagram
+    dCalendario ||--o{ Arquivos : "Data"
+    dCalendario {
+        date Data
+        int Ano
+        string Mes
+        int MesN
+        string MesReduzido
+        string MesAnoPublicacao
+        int DiaN
+        string DiaSemana
+        int DiaSemanaN
+        int SemanaDoAno
+    }
+    Arquivos {
+        date Data
+        string Titulo
+        string Assunto
+        string Protocolo
+        string Orgao
+        string Conteudo
+        string Link
+        int TotalPalavras
+        int TempoLeituraMin
+        string TempoLeituraMinTexto
+    }
+```
 
-## 🗂️ Modelo de dados O modelo tem uma **tabela central de contratos**, uma **tabela de eventos** com o histórico e dimensões auxiliares. A chave principal de ligação é **`ID_CONTRATO_ANO`**, 
-uma chave composta criada por mim para identificar o contrato de forma única (o número do contrato se repete entre anos). 
+> A tabela `Medidas` não tem relacionamentos. Ela serve só para organizar as medidas DAX.
 
-### Tabelas principais (LicitaCon) 
-| Tabela | Papel | Destaques | 
-|---|---|---| 
-| `Contratos` | Dimensão central | `ANO_CONTRATO`, `ANO_LICITACAO`, `ANO_PROCESSO`, `ANO_ASSINATURA` (calc.), `CD_TIPO_MODALIDADE`, 
-`CNPJ_CONSORCIO`, `CNPJ_ORGAO_GERENCIADOR`, flags `BL_*`, `DIAS_RESTANTE_CONTRATO` (calc.) | | `Evento` | Fato: histórico de eventos | 
-`DT_EVENTO`, `CD_TIPO_EVENTO`, `DS_PUBLICACAO`, `NR_CONTRATO`, `NR_PROCESSO`, `NR_REGISTRO`, `SQ_EVENTO`, `ID_CONTRATO_ANO` | | `Alteração` *(oculta)* | 
-Detalhe das alterações | `CD_TIPO_OPERACAO`, `DS_JUSTIFICATIVA`, `DS_OUTRA_OPERACAO`, `NR_DIAS_NOVO_PRAZO`, `NR_DOCUMENTO_ANTERIOR/NOVO`, acréscimos | | 
-`Alteracao_Evento` | Junção alteração × evento, já tratada | `DT_EVENTO`, `SQ_EVENTO`, `TIPO_OPERACAO_DESC`, `DiasNovoPrazo`, `PcAcrescimo` | | `Documentos` | 
-Arquivos do contrato | `ARQUIVO_URL_DOWNLOAD`, `NOME_ARQUIVO_DOCUMENTO`, `CD_TIPO_DOCUMENTO`, `ARQUIVO_HASH_MD5`, `ID_EVENTO_CONTRATO` | | `Pessoas` | Fornecedores | 
-Endereço, `DS_EMAIL`, `DS_OBJETO_SOCIAL`, `DS_PAGINA_INTERNET` etc. | 
-### Tabelas de atualização (DOE) 
-| Tabela | Papel | 
-|---|---| | 
-`contratos_agergs_v2` *(oculta)* | Leitura da pasta de JSONs (Content, Folder Path, datas) | | `pasta_dos_json` | JSONs expandidos: `contrato`, `fiscal`, `gestor`, `tipo`, `Name` | 
-| `atualizacao_contratos` | Última atualização por contrato: `id_contrato`, `valor`, `vigencia`, `link`, `nome` | | `Atualizacao` | `DataAtualizacao`, usada no cabeçalho *"Atualizado em..."* |
-### Responsáveis | 
-Tabela | Papel | 
-|---|---| | 
-`Gestores` / `Fiscais` | 
-Responsável por contrato, com `Final Vigência` e indicação do responsável **atual** (`Gestor_Atual`, `Fiscal_Atual`) | |
-`Gestores_Normalizados` / `Fiscais_Normalizados` | Uma linha por responsável × contrato, para alimentar os filtros sem nomes duplicados ou grafados de formas diferentes | 
-### Apoio 
-- `Calendario`: `Data`, `Ano`, `AnoMes`, `Dia`, `Dia semana`. 
-- `Medidas`: tabela só para organizar as medidas.
+### `Arquivos` (fato)
+
+| Coluna | Descrição |
+|---|---|
+| `Data` | Data de publicação no DOE |
+| `Título` | Seção/título da publicação (ex.: Resoluções, Recursos Humanos, Decretos) |
+| `Assunto` | Classificação da publicação (Resolução, Portaria, Afastamento...) |
+| `Protocolo` | Número de protocolo da publicação |
+| `Órgão` | Órgão responsável |
+| `Conteúdo` | Texto integral da publicação |
+| `Link` | URL da publicação original (categoria de dados: URL da Web) |
+| `Total palavras` | Coluna calculada: contagem de palavras do conteúdo |
+| `TempoLeituraMin` | Coluna calculada: tempo estimado de leitura em minutos |
+| `TempoLeituraMinTexto` | Coluna calculada: tempo formatado para exibição (ex.: "2 minutos") |
+
+### `dCalendário` (dimensão)
+
+| Coluna | Descrição |
+|---|---|
+| `Data` | Data (chave do relacionamento) |
+| `Ano`, `Mês`, `Mês N`, `Mês reduzido` | Atributos de ano e mês |
+| `Mês e Ano publicação` | Rótulo usado no eixo do gráfico de distribuição |
+| `Dia N`, `Dia semana`, `Dia semana N` | Atributos de dia |
+| `Semana do ano` | Número da semana |
+
+**Relacionamento:** `dCalendário[Data]` 1 → * `Arquivos[Data]`, com filtragem em direção única.
+
+---
+
+## 🧮 Colunas calculadas
+
+| Coluna | Lógica |
+|---|---|
+| `Total palavras` | Conta as palavras de `Conteúdo` |
+| `TempoLeituraMin` | `Total palavras` ÷ velocidade média de leitura `[CONFIRMAR: ex. 200 palavras/min]`, arredondado |
+| `TempoLeituraMinTexto` | Converte o valor em texto amigável ("1 minuto", "11 minutos") |
+| `Mês e Ano publicação` | Rótulo mês/ano usado no eixo do gráfico de distribuição |
+
+---
+
+## 📐 Medidas DAX
+
+| Grupo | Medidas | Uso |
+|---|---|---|
+| Contagem geral | `Qtde publicações` | KPI principal |
+| Períodos rápidos | `Qtde publicações hoje`, `Publicações 30 dias`, `Publicações 6 meses`, `Publicações 1 ano`, `Qtde publicações semana` | Botões de filtro rápido e cards |
+| Comparativos de tempo | `Qtde publicações LD`, `Qtde Publicações LM`, `Qtde Publicações LY`, `Qtde publicações mês atual`, `Qtde publicações mês anterior`, `Qtde publicações mês selecionado`, `Qtde publicações último dia com publicação` | Comparação com dia, mês e ano anteriores |
+| Rótulos dinâmicos | `Ano anterior (nome)`, `Mês anterior (nome)`, `Data Inicial`, `Data Final`, `Sumário Dinâmico` | Textos e títulos que mudam conforme o filtro |
+| Leitura | `Média tempo leitura`, `Tempo leitura hoje` | Card de tempo médio (formato `Xmin YYs`) |
+| Médias | `Média diária publicações – últimos dias` | Linha de referência e indicadores de média |
+| Visual / UX | `Mural publicação`, `Cor variação dia` | Painel de conteúdo e formatação condicional |
+
+### Exemplos (ilustrativos, trocar pelo DAX real)
+
+```dax
+Qtde publicações =
+COUNTROWS ( Arquivos )
+```
+
+```dax
+Qtde Publicações LM =
+CALCULATE (
+    [Qtde publicações],
+    DATEADD ( dCalendário[Data], -1, MONTH )
+)
+```
+
+```dax
+Mural publicação =
+IF (
+    HASONEVALUE ( Arquivos[Protocolo] ),
+    SELECTEDVALUE ( Arquivos[Conteúdo] ),
+    "Selecione uma publicação na tabela para ler o conteúdo."
+)
+```
+
+---
+
+## 🔄 Fonte e atualização dos dados
+
+`[CONFIRMAR]` Descreva aqui o pipeline de ingestão. Exemplo de estrutura:
+
+```mermaid
+flowchart LR
+    A[Diário Oficial - DOE] --> B[Coleta<br>CONFIRMAR: Power Automate / Python]
+    B --> C[Tratamento<br>texto, protocolo, assunto, link]
+    C --> D[Arquivos no<br>OneDrive / SharePoint]
+    D --> E[Power Query<br>tabela Arquivos]
+    E --> F[Power BI Service<br>atualização agendada]
+```
+
+| Etapa | Descrição |
+|---|---|
+| 1. Coleta | As publicações do DOE são obtidas por `[CONFIRMAR]` |
+| 2. Tratamento | Limpeza do texto e extração de protocolo, assunto, título e link |
+| 3. Armazenamento | Arquivos em `[CONFIRMAR: OneDrive / SharePoint]` no formato `[CONFIRMAR: CSV / JSON]` |
+| 4. Carga | O Power Query consolida os arquivos na tabela `Arquivos` |
+| 5. Atualização | Atualização agendada no Power BI Service `[CONFIRMAR: frequência]` |
+
+---
+
+## 💻 Tecnologias
+
+| Ferramenta | Uso |
+|---|---|
+| Power BI Desktop / Service | Relatório e publicação |
+| Power Query (M) | ETL e consolidação dos arquivos |
+| DAX | Medidas, inteligência temporal e rótulos dinâmicos |
+| `[CONFIRMAR]` Power Automate / Python | Coleta das publicações |
+| `[CONFIRMAR]` OneDrive / SharePoint | Armazenamento dos arquivos |
+
+---
+
+## 📚 Aprendizados
+
+- Modelagem estrela com **dimensão calendário** dedicada e tabela de medidas separada.
+- **Inteligência temporal** em DAX (LD, LM, LY e períodos móveis).
+- Experiência de uso com **botões, bookmarks e textos dinâmicos**, para o painel funcionar quase como uma aplicação.
+- Exibição de **texto longo** dentro do Power BI, como um leitor de documentos.
+- Métrica derivada de texto (**tempo de leitura**) a partir da contagem de palavras.
+
+---
+
+## 👤 Autor
+
+**Antonio Augusto Geraldes Filho**
+Estagiário de Dados/TI na AGERGS · Análise e Desenvolvimento de Sistemas, Senac-RS
+📍 Porto Alegre, RS
+
+> Os dados exibidos são publicações oficiais e públicas do Diário Oficial do Estado do RS.
