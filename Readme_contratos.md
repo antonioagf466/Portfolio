@@ -100,7 +100,6 @@ flowchart LR
 4. O Power Query lê a pasta (`contratos_agergs_v2`), expande os arquivos e **mantém só o registro mais recente por `id_contrato`**.
 5. O resultado (`atualizacao_contratos`) complementa os dados do LicitaCon.
 
-`[CONFIRMAR]` Forma de carga do LicitaCon (download CSV, API, outro) e frequência de atualização.
 
 ---
 
@@ -155,20 +154,8 @@ O modelo tem uma **tabela central de contratos**, uma **tabela de eventos** com 
 | `_Data Base Apostilamento` | Data de referência para apostilamentos e reajustes |
 | `Contratos último ano` / `Contratos últimos 6 meses` | Contagem de contratos no período |
 | `Descrição objeto` / `Descrição observação` | Textos dinâmicos do contrato selecionado |
-| `[CONFIRMAR]` Valor inicial, Valor atual, Variação (R$), Variação (%) | Cards de evolução |
+|  Valor inicial, Valor atual, Variação (R$), Variação (%) | Cards de evolução |
 
-Exemplo ilustrativo (trocar pelo DAX real):
-
-```dax
-Delta Válido Acumulado (R$) =
-CALCULATE (
-    [Delta Válido (R$)],
-    FILTER (
-        ALL ( Calendario[Data] ),
-        Calendario[Data] <= MAX ( Calendario[Data] )
-    )
-)
-```
 
 ---
 
