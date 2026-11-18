@@ -146,7 +146,7 @@ stateDiagram-v2
 | **Avisos dos ticketes** | Item alterado no SharePoint | Detecta mudança de status e avisa o solicitante e os atribuídos pelo bot do Teams |
 | **Aviso de Ticket Aberto** | Agendado | Procura chamados há 7 dias sem mudança de status e lembra o solicitante e os atribuídos |
 | **Ticket Sharepoint para Excel** | Item criado ou alterado | Copia ou atualiza o chamado na `Tabela_tiquetes.xlsx`, base do Power BI |
-| **Monitoramento de Tíquetes Todos** | Agendado | `[CONFIRMAR: o que este fluxo faz]` |
+| **Monitoramento de Tíquetes Todos** | Agendado | Avisa no início do expediente quantos tickets estão abertos no começo do dia |
 
 ---
 
@@ -256,8 +256,6 @@ O `bi_tiquetes.pbix` usa a `Tabela_tiquetes.xlsx` como fonte, carregada em uma �
 ### Modelo
 
 Tabela única `Consulta1`, com colunas como `Ativo`, `Atribuído a`, `Caminho`, `Criado`, `Data Criação`, `Descrição do problema`, `Evidência`, `Interessado`, `Modificado`, `Prioridade`, `Status` e `Unidade`.
-
-> Os níveis de prioridade no painel são Crítico, Alta e Normal. `[CONFIRMAR: como eles se relacionam com Urgente, Importante e Média do formulário]`
 
 ---
 
