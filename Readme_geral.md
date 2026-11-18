@@ -2,7 +2,8 @@
 
 Além dos projetos detalhados neste portfólio, desenvolvi uma **coleção de fluxos e automações no Power Automate**. Eles foram criados para **economizar tempo, reduzir tarefas repetitivas e deixar a rotina de trabalho mais simples**, tanto para o setor de TI quanto para a AGERGS como um todo.
 
-![Visão geral](/fluxos_pad.png)
+![Visão geral](/fluxos_pad1.png)
+
 ---
 
 ## 🎯 Objetivo
