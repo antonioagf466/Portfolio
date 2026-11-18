@@ -155,7 +155,7 @@ erDiagram
 | Coluna | Lógica |
 |---|---|
 | `Total palavras` | Conta as palavras de `Conteúdo` |
-| `TempoLeituraMin` | `Total palavras` ÷ velocidade média de leitura `[CONFIRMAR: ex. 200 palavras/min]`, arredondado |
+| `TempoLeituraMin` | `Total palavras` ÷ velocidade média de leitura, arredondado |
 | `TempoLeituraMinTexto` | Converte o valor em texto amigável ("1 minuto", "11 minutos") |
 | `Mês e Ano publicação` | Rótulo mês/ano usado no eixo do gráfico de distribuição |
 
@@ -214,11 +214,11 @@ flowchart LR
 
 | Etapa | Descrição |
 |---|---|
-| 1. Coleta | As publicações do DOE são obtidas por `[CONFIRMAR]` |
+| 1. Coleta | As publicações do DOE são obtidas por uma automação criada por mim no Power Automate Desktop |
 | 2. Tratamento | Limpeza do texto e extração de protocolo, assunto, título e link |
-| 3. Armazenamento | Arquivos em `[CONFIRMAR: OneDrive / SharePoint]` no formato `[CONFIRMAR: CSV / JSON]` |
+| 3. Armazenamento | Arquivos em  OneDrive no formato CSV |
 | 4. Carga | O Power Query consolida os arquivos na tabela `Arquivos` |
-| 5. Atualização | Atualização agendada no Power BI Service `[CONFIRMAR: frequência]` |
+| 5. Atualização | Atualização agendada no Power BI Service 1 vez ao dia |
 
 ---
 
@@ -229,8 +229,8 @@ flowchart LR
 | Power BI Desktop / Service | Relatório e publicação |
 | Power Query (M) | ETL e consolidação dos arquivos |
 | DAX | Medidas, inteligência temporal e rótulos dinâmicos |
-| `[CONFIRMAR]` Power Automate / Python | Coleta das publicações |
-| `[CONFIRMAR]` OneDrive / SharePoint | Armazenamento dos arquivos |
+| Power Automate / Python | Coleta das publicações |
+|  OneDrive | Armazenamento dos arquivos |
 
 ---
 
