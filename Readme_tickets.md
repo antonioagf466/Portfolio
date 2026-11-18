@@ -220,7 +220,7 @@ sequenceDiagram
 
 ## 📊 Painel no Power BI
 
-/tickets_bi.png
+(/tickets_bi.png)
 
 O `bi_tiquetes.pbix` usa a `Tabela_tiquetes.xlsx` como fonte, carregada em uma única tabela (`Consulta1`).
 
@@ -281,14 +281,6 @@ Tabela única `Consulta1`, com colunas como `Ativo`, `Atribuído a`, `Caminho`, 
 - Combinar fluxos **por evento** com fluxos **agendados**, como o lembrete de 7 dias.
 - Enviar **avisos individuais por bot** no Teams, sem lotar o canal da equipe.
 - Criar uma **base histórica** separada do SharePoint para análises no Power BI.
-
----
-
-## 🚀 Próximos passos
-
-- [ ] Pesquisa de satisfação automática ao concluir o chamado
-- [ ] Indicadores de tempo de atendimento e SLA por prioridade no Power BI
-- [ ] Base de conhecimento ligada às Perguntas Frequentes do site
 
 ---
 
