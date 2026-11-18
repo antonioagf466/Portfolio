@@ -177,13 +177,11 @@ erDiagram
 
 ## 🔄 Fonte e atualização dos dados
 
-`[CONFIRMAR]` Descreva aqui o pipeline de ingestão. Exemplo de estrutura:
-
 ```mermaid
 flowchart LR
-    A[Diário Oficial - DOE] --> B[Coleta<br>CONFIRMAR: Power Automate / Python]
+    A[Diário Oficial - DOE] --> B[Coleta<br>: Power Automate / Python]
     B --> C[Tratamento<br>texto, protocolo, assunto, link]
-    C --> D[Arquivos no<br>OneDrive / SharePoint]
+    C --> D[Arquivos no<br>OneDrive]
     D --> E[Power Query<br>tabela Arquivos]
     E --> F[Power BI Service<br>atualização agendada]
 ```
