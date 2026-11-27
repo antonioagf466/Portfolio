@@ -1,4 +1,4 @@
-# 📑 Análise dos Contratos — AGERGS
+# 📑 Análise de Contratos - AGERGS
 
 Painel em **Power BI** desenvolvido na **AGERGS** (Agência Estadual de Regulação dos Serviços Públicos Delegados do Rio Grande do Sul) para acompanhar o **ciclo de vida dos contratos da agência**: assinatura, termos aditivos, prorrogações, renovações, ordens de início e publicações.
 
@@ -7,6 +7,7 @@ O painel junta duas fontes:
 - **Diário Oficial do Estado (DOE)**: atualizações extraídas das publicações por um agente de IA. Assim o painel fica atualizado antes de os dados chegarem ao LicitaCon.
 
 ---
+> ⚠️ **Os dados apresentados neste projeto são de domínio público e foram utilizados neste portfólio com autorização da AGERGS.**
 
 ## 📌 Sumário
 
