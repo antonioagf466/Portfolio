@@ -27,7 +27,6 @@ O sistema cobre o ciclo completo de um chamado, só com ferramentas do Microsoft
 - #-painel-no-power-bi
 - #-tecnologias
 - #-aprendizados
-- #-próximos-passos
 
 ---
 
