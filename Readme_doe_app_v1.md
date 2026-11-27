@@ -5,7 +5,7 @@ Painel em **Power BI** desenvolvido na **AGERGS** (Agência Estadual de Regulaç
 O objetivo é dar às equipes uma forma rápida de saber **o que foi publicado, quando, sobre qual assunto**, e ler o conteúdo completo de cada publicação sem precisar navegar pelo site do Diário Oficial.
 
 ---
-
+> ⚠️ **Os dados apresentados neste projeto são de domínio público e foram utilizados neste portfólio com autorização da AGERGS.**
 ## 📌 Sumário
 
 - [Contexto e problema](#-contexto-e-problema)
