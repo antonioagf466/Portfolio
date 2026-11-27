@@ -39,9 +39,9 @@ O dashboard reúne tudo em uma tela, com histórico de eventos, evolução de va
 
 ## 🖥️ Visão geral do dashboard
 
-![Visão geral](/contratos_pagina_inicial.png)
-![Evolução do contrato](/contratos_pagina_inicial_clicada.png)
-![Modelo de dados](/contratos_dados.png)
+![Visão geral](/Contratos/contratos_pagina_inicial.png)
+![Evolução do contrato](/Contratos/contratos_pagina_inicial_clicada.png)
+![Modelo de dados](/Contratos/contratos_dados.png)
 
 | Área | Descrição |
 |---|---|
