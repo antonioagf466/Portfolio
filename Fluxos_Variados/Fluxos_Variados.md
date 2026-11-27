@@ -1,3 +1,4 @@
+<a id="topo"></a>
 # ⚙️ Automações e Fluxos — AGERGS
 
 Além dos projetos detalhados neste portfólio, desenvolvi uma **coleção de fluxos e automações no Power Automate**. Eles foram criados para **economizar tempo, reduzir tarefas repetitivas e deixar a rotina de trabalho mais simples**, tanto para o setor de TI quanto para a AGERGS como um todo.
@@ -77,3 +78,6 @@ Alguns desses fluxos alimentam os outros projetos:
 **Antonio Augusto Geraldes Filho**
 Estagiário de Dados/TI na AGERGS · Análise e Desenvolvimento de Sistemas, Senac-RS
 📍 Porto Alegre, RS
+
+- [Voltar ao topo](#topo)
+- [Voltar ao Readme geral](/Readme.md)
