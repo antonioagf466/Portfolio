@@ -71,5 +71,5 @@ Estagiário de Dados/TI na AGERGS · Análise e Desenvolvimento de Sistemas, Sen
 📍 Porto Alegre, RS
 
 - **GitHub:** [antonioagf466](https://github.com/antonioagf466)
-- **LinkedIn:** [Antonio Geraldes]([https://www.linkedin.com/in/seu-perfil](https://www.linkedin.com/in/antonio-augusto-geraldes-filho-b59bb234b/))
+- **LinkedIn:** [https://www.linkedin.com/in/antonio-augusto-geraldes-filho-b59bb234b/](https://www.linkedin.com/in/antonio-augusto-geraldes-filho-b59bb234b/)
 - **E-mail:** antonioageraldesf@gmail.com
