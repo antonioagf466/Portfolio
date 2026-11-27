@@ -17,7 +17,6 @@ O objetivo é dar às equipes uma forma rápida de saber **o que foi publicado, 
 - [Fonte e atualização dos dados](#-fonte-e-atualização-dos-dados)
 - [Tecnologias](#-tecnologias)
 - [Aprendizados](#-aprendizados)
-- [Próximos passos](#-próximos-passos)
 
 ---
 
@@ -225,3 +224,5 @@ Estagiário de Dados/TI na AGERGS · Análise e Desenvolvimento de Sistemas, Sen
 📍 Porto Alegre, RS
 
 > Os dados exibidos são publicações oficiais e públicas do Diário Oficial do Estado do RS.
+
+- [Voltar ao topo](#-sumario)
