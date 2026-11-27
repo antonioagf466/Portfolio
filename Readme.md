@@ -54,7 +54,6 @@ Projetos com código-fonte completo, cada um em um repositório próprio:
 | Projeto | Descrição | Repositório |
 |---|---|---|
 | 🚌 Harmonização BOD-TMA | Padronização de milhares de planilhas de transporte com layouts diferentes para o schema do SIA, usando Python | 🔜 *Em breve* |
-| *Nome do projeto* | *Breve descrição* | 🔜 *Em breve* |
 
 ---
 
