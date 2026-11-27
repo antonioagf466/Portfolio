@@ -95,10 +95,10 @@ Formulário **"Registro de Chamado - DTI/AGERGS"** no Microsoft Forms, com **ram
 | **Assessoria especializada** | Dados e Business Intelligence · Atualização ou Publicação no Site da AGERGS · Cancelamento de Documento no SEI · SIA, SINTRA, Aplicativo Móvel e DPA · Assunto não listado |
 | **Suporte a reuniões e plenário** | Sessão do Conselho Superior (Plenário) · Reunião Híbrida ou Online · Empréstimo ou Ajuste de Equipamento Audiovisual |
 
-![Forms imagem 1](/forms1.png)
-![Forms imagem 2](/forms2.png)
-![Forms imagem 3](/forms3.png)
-![Forms imagem 4](/forms4.png)
+![Forms imagem 1](/Tickets/forms1.png)
+![Forms imagem 2](/Tickets/forms2.png)
+![Forms imagem 3](/Tickets/forms3.png)
+![Forms imagem 4](/Tickets/forms4.png)
 
 ---
 ## 📋 Lista do SharePoint
