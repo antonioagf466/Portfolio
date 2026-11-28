@@ -1,7 +1,7 @@
 <a id="topo"></a>
 # 🎫 Sistema de Chamados da DTI — AGERGS
 
-Solução de **automação de chamados (tickets)** desenvolvida na **AGERGS** (Agência Estadual de Regulação dos Serviços Públicos Delegados do Rio Grande do Sul) para a **Diretoria de TI (DTI)**.
+Solução de **automação de chamados (tickets)** desenvolvida **individualmente** por mim no meu estágio de engenharia de dados na **AGERGS** (Agência Estadual de Regulação dos Serviços Públicos Delegados do Rio Grande do Sul) para a **Diretoria de TI (DTI)**.
 
 O sistema cobre o ciclo completo de um chamado, só com ferramentas do Microsoft 365:
 - o servidor abre o chamado pelo **Microsoft Forms**;
