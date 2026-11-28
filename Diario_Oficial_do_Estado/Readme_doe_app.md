@@ -1,7 +1,7 @@
 <a id="topo"></a>
 # 📰 Dashboard Diário Oficial — AGERGS
 
-Painel em **Power BI** desenvolvido **individualmente** por mim no meu estágio de engenharia de dados na **AGERGS** (Agência Estadual de Regulação dos Serviços Públicos Delegados do Rio Grande do Sul) para centralizar, pesquisar e analisar as publicações da agência no **Diário Oficial do Estado (DOE)**.
+Painel em **Power BI** desenvolvido individualmente por mim no meu estágio de engenharia de dados na **AGERGS** (Agência Estadual de Regulação dos Serviços Públicos Delegados do Rio Grande do Sul) para centralizar, pesquisar e analisar as publicações da agência no **Diário Oficial do Estado (DOE)**.
 
 O objetivo é dar às equipes uma forma rápida de saber **o que foi publicado, quando, sobre qual assunto**, e ler o conteúdo completo de cada publicação sem precisar navegar pelo site do Diário Oficial.
 
