@@ -15,27 +15,11 @@ O sistema cobre o ciclo completo de um chamado, só com ferramentas do Microsoft
 ---
 
 ## 📌 Sumário
-- #-contexto-e-problema
-- #-arquitetura-da-solução
-- #-formulário-de-abertura
-- #-lista-do-sharepoint
-- #-fluxos-faça-automatização-de-energia
-- #-atribuição-automática
-- #-notle
-- #-arquivos-de-apoio
-- #-painel-sem-energia-bi
-- #-tecnologias
-- #-aprendizados
 
 - [Contexto e problema](#-contexto-e-problema)
-- [Arquitetura da solução](#-arquitetura-da-solução)
 - [Formulário de abertura](#-formulário-de-abertura)
 - [Lista do sharepoint](#-lista-do-sharepoint)
-- [Fluxos faça automatização de energia](#-fluxos-faça-automatização-de-energia)
 - [Atribuição automática](#-atribuição-automática)
-- [Notle](#-notle)
-- [Painel sem energia bi](#-painel-sem-energia-bi)
-- [Tecnologias](#-tecnologias)
 - [Aprendizados](#-aprendizados)
 
 ---
