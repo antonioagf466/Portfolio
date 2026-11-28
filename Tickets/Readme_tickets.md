@@ -118,9 +118,14 @@ Os chamados ficam na lista **`V2_Tíquetes`**, no site **AGERGS - DTI-Chamados**
 
 ```mermaid
 stateDiagram-v2
+    state "Novo" as Novo
+    state "Em andamento" as EmAndamento
+    state "Concluído" as Concluido
+
     [*] --> Novo
-    Novo --> Em Andamento: TI inicia o atendimento    Em Andamento --> Concluido: chamado resolvido
-    Novo --> Concluido: resolução direta
+    Novo --> EmAndamento: TI inicia o atendimento
+    EmAndamento --> Concluido: Chamado resolvido
+    Novo --> Concluido: Resolução direta
     Concluido --> [*]
 ```
 
