@@ -4,7 +4,7 @@
 
 Olá! Sou **Antonio Augusto Geraldes Filho**, estagiário de Engenharia de Dados na **AGERGS** (Agência Estadual de Regulação dos Serviços Públicos Delegados do Rio Grande do Sul) e estudante de Análise e Desenvolvimento de Sistemas no Senac-RS.
 
-Este repositório reúne a documentação de projetos que desenvolvi na agência: **dashboards em Power BI**, **automações no Power Automate** e uma **solução de chamados** feita só com ferramentas do Microsoft 365. Cada pasta tem um README próprio com o contexto, a arquitetura, o modelo de dados e imagens da solução.
+Este repositório reúne a documentação de projetos que desenvolvi **individualmente** na AGERGS: **dashboards em Power BI**, **automações no Power Automate** e uma **solução de chamados** feita só com ferramentas do Microsoft 365. Cada pasta tem um README próprio com o contexto, a arquitetura, o modelo de dados e imagens da solução.
 
 ---
 
