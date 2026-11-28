@@ -17,6 +17,7 @@ O sistema cobre o ciclo completo de um chamado, só com ferramentas do Microsoft
 ## 📌 Sumário
 
 - [Contexto e problema](#-contexto-e-problema)
+- [Arquitetura da solução](#-arquitetura-da-solução)
 - [Formulário de abertura](#-formulário-de-abertura)
 - [Lista do sharepoint](#-lista-do-sharepoint)
 - [Atribuição automática](#-atribuição-automática)
