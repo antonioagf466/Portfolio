@@ -15,7 +15,7 @@ Este repositório reúne a documentação de projetos que desenvolvi na agência
 | 📰 [Dashboard Diário Oficial](./Diario_Oficial_do_Estado/Readme_doe_app.md) | Consulta centralizada das publicações da AGERGS no DOE desde 2022, com busca por conteúdo ou protocolo, leitura do texto completo e indicadores | Power BI · DAX · Power Query · Power Automate Desktop |
 | 📑 [Análise de Contratos](./Contratos/Readme_contratos.md) | Ciclo de vida dos contratos com dados do LicitaCon (TCE-RS), atualizados com renovações e aditivos extraídos do DOE por um agente de IA | Power BI · DAX · Power Query · Power Automate · Copilot Studio |
 | 🎫 [Sistema de Chamados da DTI](./Tickets/Readme_tickets.md) | Chamados abertos pelo Forms, registrados no SharePoint, atribuídos automaticamente conforme ausências e notificados por bot no Teams, com painel no Power BI | Forms · SharePoint · Power Automate · Teams · Power BI |
-| ⚙️ [Automações e Fluxos](./Fluxos_Variados/Fluxos_variados.md) | Coleção de fluxos para extração de dados públicos, avisos de expiração de senha do AD e alertas de prazo para empresas | Power Automate Desktop/Cloud · Active Directory · Teams |
+| ⚙️ [Automações e Fluxos](./Fluxos_Variados/Fluxos_Variados.md) | Coleção de fluxos para extração de dados públicos, avisos de expiração de senha do AD e alertas de prazo para empresas | Power Automate Desktop/Cloud · Active Directory · Teams |
 
 ---
 
