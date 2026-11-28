@@ -16,18 +16,15 @@ O sistema cobre o ciclo completo de um chamado, só com ferramentas do Microsoft
 
 ## 📌 Sumário
 
-- #-contexto-e-problema
-- #-arquitetura-da-solução
-- #-formulário-de-abertura
-- #-lista-do-sharepoint
-- #-fluxos-do-power-automate
-- #-atribuição-automática
-- #-notificações
-- #-arquivos-de-apoio
-- #-painel-no-power-bi
-- #-tecnologias
-- #-aprendizados
-
+- [Contexto e problema](#-contexto-e-problema)
+- [Visão geral do dashboard](#-visão-geral-do-dashboard)
+- [Funcionalidades](#-funcionalidades)
+- [Modelo de dados](#-modelo-de-dados)
+- [Colunas calculadas](#-colunas-calculadas)
+- [Medidas DAX](#-medidas-dax)
+- [Fonte e atualização dos dados](#-fonte-e-atualização-dos-dados)
+- [Tecnologias](#-tecnologias)
+- [Aprendizados](#-aprendizados)
 ---
 
 ## 🎯 Contexto e problema
